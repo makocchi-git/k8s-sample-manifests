@@ -10,4 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ github.event.head_commit.message }}"
+      - name: validate
+        uses: makocchi-git/actions-k8s-manifests-validate@master
+        with:
+          token: ${{ secrets.GITHUB_API_TOKEN }}
