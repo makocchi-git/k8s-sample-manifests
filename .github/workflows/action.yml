@@ -1,27 +1,14 @@
 name: Pull Request Check
 
-on:
-  pull_request:
-    branches:
-      - master
+on: [pull_request]
 
 jobs:
-
-  test1:
+  validation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: validate1
-        uses: makocchi-git/actions-k8s-manifests-validate@master
+      - name: validate manifests in dir1 and dir2
+        uses: makocchi-git/actions-k8s-manifests-validate@1.0.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-  test2:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: validate2
-        uses: makocchi-git/actions-k8s-manifests-validate@master
-        with:
-          token: ${{ secrets.GITHUB_API_TOKEN }}
           files: dir1,dir2
+          token: ${{ secrets.GITHUB_TOKEN }}
