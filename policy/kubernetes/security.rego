@@ -50,18 +50,18 @@ violation[msg] {
 	msg = kubernetes.format(sprintf("%s in the %s %s is not using a read only root filesystem", [container.name, kubernetes.kind, kubernetes.name]))
 }
 
-violation[msg] {
-	kubernetes.containers[container]
-	kubernetes.priviledge_escalation_allowed(container)
-	msg = kubernetes.format(sprintf("%s in the %s %s allows priviledge escalation", [container.name, kubernetes.kind, kubernetes.name]))
-}
+#violation[msg] {
+#	kubernetes.containers[container]
+#	kubernetes.priviledge_escalation_allowed(container)
+#	msg = kubernetes.format(sprintf("%s in the %s %s allows priviledge escalation", [container.name, kubernetes.kind, kubernetes.name]))
+#}
 
 # https://kubesec.io/basics/containers-securitycontext-runasnonroot-true/
-violation[msg] {
-	kubernetes.containers[container]
-	not container.securityContext.runAsNonRoot = true
-	msg = kubernetes.format(sprintf("%s in the %s %s is running as root", [container.name, kubernetes.kind, kubernetes.name]))
-}
+#violation[msg] {
+#	kubernetes.containers[container]
+#	not container.securityContext.runAsNonRoot = true
+#	msg = kubernetes.format(sprintf("%s in the %s %s is running as root", [container.name, kubernetes.kind, kubernetes.name]))
+#}
 
 # https://kubesec.io/basics/containers-securitycontext-runasuser/
 violation[msg] {
