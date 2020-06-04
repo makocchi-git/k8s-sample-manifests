@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: validate manifests in dir1
-        uses: makocchi-git/actions-k8s-manifests-validate-conftest@latest
+        uses: makocchi-git/actions-k8s-manifests-validate-conftest@v1.0.0
         with:
           file: dir1
           token: ${{ secrets.GITHUB_TOKEN }}
